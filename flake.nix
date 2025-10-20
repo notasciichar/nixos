@@ -6,13 +6,11 @@
   };
 
   outputs = { self, nixpkgs }: {
-
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-system = "x86_64-linux";
+      system = "x86_64-linux";
       modules = [
-./configuration.nix
-];
-
+        ./configuration.nix
+      ];
+    };
   };
-};
 }
