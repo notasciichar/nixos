@@ -33,20 +33,34 @@
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      autoPrune = true;
+    };
+  };
+
   users.users.nihal = {
     isNormalUser = true;
     description = "nihal";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ 
+      "networkmanager" 
+      "wheel" 
+      "podman"
+    ];
     packages = with pkgs; [];
-openssh.authorizedKeys.keys = [
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILf2Rk2zBDt59KMamn3hFdyQwSu+hLy3yqwotpqZ5sDa nixos"
-];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILf2Rk2zBDt59KMamn3hFdyQwSu+hLy3yqwotpqZ5sDa nixos"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
     vim
     git
+    fail2ban
+    podman
+    podman-compose
   ];
 
   services.openssh.enable = true;
