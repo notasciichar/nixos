@@ -56,7 +56,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
     git
     fail2ban
     podman
