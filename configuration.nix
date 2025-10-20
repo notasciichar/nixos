@@ -37,7 +37,9 @@
     containers.enable = true;
     podman = {
       enable = true;
-      autoPrune = true;
+      autoPrune = {
+        enable = true;
+      };
     };
   };
 
