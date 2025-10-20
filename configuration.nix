@@ -59,6 +59,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    vim
     fail2ban
     podman
     podman-compose
